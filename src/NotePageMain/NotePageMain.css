@@ -1,0 +1,12 @@
+
+.NotePageMain {
+  background-color: #15243a;
+  height: 100%;
+  padding: 10px;
+  width: 100%;
+}
+
+.NotePageMain__content {
+  color: #838383;
+  max-width: 380px;
+}
