@@ -16,9 +16,10 @@ export default class NoteListNav extends React.Component { /*simply creates all 
       <div className='NoteListNav'>
         <ul className='NoteListNav__list'>
           {folders.map(folder => /*creating all folder navigation elements */
-            <ErrorBoundary>
+            <ErrorBoundary key={folder.id}>
             <li key={folder.id}> 
               <NavLink /*creates a list of nav links that stay highlighted when last clicked*/
+                key={folder.id}
                 className='NoteListNav__folder-link'
                 to={`/folder/${folder.id}`} /*sets up the hrefs create the URL based on folder_ids */
               >

@@ -71,8 +71,8 @@ export default class Note extends React.Component {
 }
 
 Note.propTypes = {
-  id: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
   folder_id: PropTypes.number.isRequired,
   date_modified: PropTypes.string
 }

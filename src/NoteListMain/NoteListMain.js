@@ -24,9 +24,10 @@ export default class NoteListMain extends React.Component {
       <section className='NoteListMain'>
         <ul>
           {notesForFolder.map(note =>    /*using the previously filtered note-list, make a new array of notes as decided by the folder_id scraped earlier*/
-            <ErrorBoundary>
+            <ErrorBoundary key={note.id}>
               <li key={note.id}>
                 <Note /*creates the note cards */
+                  key={note.id}
                   id={note.id}
                   title={note.title}
                   folder_id={note.folder_id}
