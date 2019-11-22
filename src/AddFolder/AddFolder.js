@@ -16,7 +16,6 @@ export default class AddFolder extends React.Component{
     static contextType = ApiContext;
 
     updateFolderName = (folderName) =>{
-        console.log('updating name', this.state.folderName)
         this.setState({
             folderName: folderName
         })
@@ -31,9 +30,6 @@ export default class AddFolder extends React.Component{
         const folderInfo = {
             name: this.state.folderName
         }
-        this.context.folders.push(folderInfo) //push into context, since API only updates context on componentDidMount
-
-        //console.log('submitting...', this.context.folders)
 
         fetch(`${config.API_ENDPOINT}/folders/`, {
             method: 'POST',
@@ -52,8 +48,8 @@ export default class AddFolder extends React.Component{
             return response.json();
         })
         .then(resJson => {
-            console.log(resJson) 
-            this.props.history.push(`/folder/${resJson.body.id}`)
+            this.context.folders.push(resJson) //push into context, since API only updates context on componentDidMount
+            this.props.history.push(`/folder/${resJson.id}`)
         })
         .catch(error => {
             alert(error);
@@ -72,12 +68,12 @@ export default class AddFolder extends React.Component{
                 <form>
                     <label className="folder-name-label">Name:</label><br/>
                     <input 
-                    id="folderName"
-                    type="text" 
-                    placeholder="folder name here" 
-                    className="folder-name-input"
-                    onChange={e => this.updateFolderName(e.target.value)}
-                    required/><br/>
+                        id="folderName"
+                        type="text" 
+                        placeholder="folder name here" 
+                        className="folder-name-input"
+                        onChange={e => this.updateFolderName(e.target.value)}
+                        required/><br/>
                     <Link to="/">
                         <button className="submit-folder-button" onClick={e => this.handleSubmit(e)}>
                             Submit

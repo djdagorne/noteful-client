@@ -19,12 +19,9 @@ export default class NotePageMain extends React.Component {
   render() {
     const { notes } = this.context
     const { note_id } = this.props.match.params /* gets note_id from the URL we are currently on */
-    //console.log('notepagemain, note_id', note_id)
-    //console.log('notes: ',notes)
     const note = findNote(notes, note_id) || { content: '' } /*filtering function. if the api suddenly breaks it renders empty, but thats ok */
-    //console.log('note: ',note)
+
     return (
-      // <ApiContext.consumer>
         <section className='NotePageMain'>
           <Note /* renders a copy of our current Note card on the page with the note itself */
             id={note.id}
@@ -39,7 +36,6 @@ export default class NotePageMain extends React.Component {
             )}
           </div>
         </section>
-      // </ApiContext.consumer> 
     )
   }
 }
